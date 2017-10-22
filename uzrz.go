@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
@@ -12,7 +13,24 @@ import (
 
 func main() {
 
-	db, err := sql.Open("mysql", "root:password@tcp(127.0.0.1:3306)/gotest")
+	dbUser := os.Getenv("DBUSER")
+	dbPassword := os.Getenv("DBPWD")
+	dbURL := os.Getenv("DBURL")
+	dbName := os.Getenv("DBNAME")
+
+	//assemble our db connection string
+	var dbConn bytes.Buffer
+	dbConn.WriteString(dbUser)
+	dbConn.WriteString(":")
+	dbConn.WriteString(dbPassword)
+	dbConn.WriteString("@tcp(")
+	dbConn.WriteString(dbURL)
+	dbConn.WriteString(":3306)/")
+	dbConn.WriteString(dbName)
+
+	fmt.Print(dbConn.String())
+
+	db, err := sql.Open("mysql", dbConn.String())
 	if err != nil {
 		fmt.Print(err.Error())
 	}
