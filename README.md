@@ -9,8 +9,6 @@ I've also added the ability to run this in a small docker container to keep it l
 # TODO
 * Break out code for better structure
 * Add tests
-* Added env management so we can switch from dev to stage to prod without fuss
-* Add 12 factor principles to code base
 
 
 # FYI
