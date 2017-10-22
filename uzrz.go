@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	db, err := sql.Open("mysql", "root:passapp@tcp(127.0.0.1:3306)/gotest")
+	db, err := sql.Open("mysql", "root:password@tcp(127.0.0.1:3306)/gotest")
 	if err != nil {
 		fmt.Print(err.Error())
 	}
