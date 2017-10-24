@@ -3,3 +3,5 @@ uzrz
 .git
 
 /docker/uzrz
+
+.idea/
